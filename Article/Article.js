@@ -85,30 +85,74 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Algebraic Structures: Things I Wish Someone Had Explained About Functional Programming',
+    date: 'October 28th, 2019',
+    firstParagraph: `Algebraic Structures are something I wish I'd understood better, sooner. I had a hazy idea of what they were, but didn't know the correct terminology. That was a massive barrier to finding out more.`,
+
+    secondParagraph: `What Is An Algebraic Structure? Well, according to Wikipedia:`,
+
+    thirdParagraph: `In mathematics, and more specifically in abstract algebra, an algebraic structure on a set A (called carrier set or underlying set) is a collection of finitary operations on A; the set A with this structure is also called an algebra.`
   }
 ];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
-  
+
   <div class="article">
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
-
     {three separate paragraph elements}
-
     <span class='expandButton'></span>
   </div>
 
   Hint: You will need to use createElement more than once here!
+  Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above. */ 
+const article = document.querySelector('.article');
 
-  Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
+function createArticle(articleData) {
+  // define new elements
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const para1 = document.createElement('p');
+  const para2 = document.createElement('p');
+  const para3 = document.createElement('p');
+  const expandButton = document.createElement('span');
 
-  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+  /* Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div. */
+  // Structure
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(para1);
+  article.appendChild(para2);
+  article.appendChild(para3);
+  article.appendChild(expandButton);
 
-  Step 3: return the entire component.
+  // Content
+  articleTitle.textContent = articleData.title;
+  articleDate.textContent = articleData.date;
+  para1.textContent = articleData.firstParagraph;
+  para2.textContent = articleData.secondParagraph;
+  para3.textContent = articleData.thirdParagraph;
+  expandButton.textContent = 'Please Continue Reading...';
 
-  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+  // Style
+  article.classList.add('article');
+  articleDate.classList.add('date');
+  expandButton.classList.add('expandButton');
 
-  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
+  /* Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div. */ 
+  // Event Handler
+  expandButtonn.addEventListener('click', (event) => {
+    article.classList.toggle('article-open');
+  })
 
-*/
+  /* Step 3: return the entire component. */
+  data.forEach(datam => {
+    article.appendChild(createArticle(datam));
+  })
+  return article
+
+  /* Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article. */
+}
