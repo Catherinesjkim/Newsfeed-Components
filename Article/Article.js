@@ -142,11 +142,10 @@ function createArticle(title, date, firstParagraph, secondParagraph, thirdParagr
   expandBtn.addEventListener('click', (event) => {
     article.classList.toggle('article-open');
   })
-
+/* Step 3: return the entire component. */
   return article
 }
 
-/* Step 3: return the entire component. */
 data.forEach(datam => {
   const newArticle = createArticle(datam.title, datam.date, datam.firstParagraph, datam.secondParagraph, datam.thirdParagraph);
   container.append(newArticle);
