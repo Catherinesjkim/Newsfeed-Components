@@ -36,4 +36,4 @@ function createMenu(menuItems) {
   return menu;
 }
 document.querySelector('.header').append(createMenu(menuItems));
-append(MenuCreator(menuItems));
+
